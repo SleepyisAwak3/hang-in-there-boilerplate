@@ -4,10 +4,10 @@
 //var showRandom = document.querySelector(".show-random");
 // var showForm = document.querySelector(".show-form");
 // var mainPoster = document.querySelector(".main-poster");
-// var posterQuote = document.querySelector(".poster-quote");
-// var posterTitle = document.querySelector(".poster-title");
-// var posterImage = document.querySelector(".poster-img");
-// var button = document.querySelector(".show-random");
+var posterQuote = document.querySelector(".poster-quote");
+var posterTitle = document.querySelector(".poster-title");
+var posterImage = document.querySelector(".poster-img");
+var button = document.querySelector(".show-random");
 
 
 // we've provided you with some data to work with 👇
