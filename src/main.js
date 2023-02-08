@@ -1,4 +1,9 @@
 // query selector variables go here 👇
+var savedPoster = document.querySelector(".save-poster")
+var showSavedPosters = document.querySelector(".show-saved");
+var showRandom = document.querySelector(".show-random");
+var showForm = document.querySelector(".show-form")
+var main
 
 // we've provided you with some data to work with 👇
 var images = [
