@@ -1,15 +1,30 @@
 
 // .query selector variables go here 👇
-// var savePoster = document.querySelector(".save-poster");
-// var showSaved = document.querySelector(".show-saved");
-//var showRandom = document.querySelector(".show-random");
-// var showForm = document.querySelector(".show-form");
-// var mainPoster = document.querySelector(".main-poster");
+//.query selectors for iteration 0
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
 var button = document.querySelector(".show-random");
+// .query selectors for iteration 1
+var hideMainPosterPage = document.querySelector(".main-poster")
+var formCreatePoster = document.querySelector(".poster-form");
+var showMyPosterButton = document.querySelector(".make-poster");
 
+var showFormButton = document.querySelector(".show-form");
+
+var takeMeBack = document.querySelector(".show-main");
+
+var posterQuoteInput = document.querySelector("#poster-quote");
+
+var posterTitleInput = document.querySelector("#poster-title");
+
+var imageUrlInput = document.querySelector("#poster-image-url");
+
+var backToMainButton = document.querySelector(".back-to-main")
+
+var showSavedPageButton = document.querySelector('.show-saved')
+
+var showSavedPosters = document.querySelector('.saved-posters')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +134,7 @@ var currentPoster;
 // showRandom.addEventListener("", "")
 button.addEventListener('click', homePage)
 window.addEventListener('load', homePage)
+
 //button.addEventListener('load', homePage())
 // functions and event handlers go here 👇
 
@@ -126,6 +142,7 @@ var imgIndex = getRandomIndex(images);
 var quoteIndex = getRandomIndex(quotes);
 var titleIndex = getRandomIndex(titles);
 
+// functions from iteration 0
 function homePage() {
 posterImage.src = images[getRandomIndex(images)]
 posterTitle.innerText = titles[getRandomIndex(titles)]
@@ -135,6 +152,10 @@ posterQuote.innerText = quotes[getRandomIndex(quotes)]
 function generatePage() {
 
   }
+//functions from iteration 1 
+function openMainPage  () {
+
+}
 
 // (we've provided one for you to get you started)!
 //function newRandomPoster() {
@@ -144,3 +165,4 @@ function generatePage() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
