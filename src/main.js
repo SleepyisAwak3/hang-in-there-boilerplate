@@ -120,12 +120,17 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// =======
-// savePoster.addEventListener("", "")
-// showSaved.addEventListener("", "")
-// showRandom.addEventListener("", "")
-button.addEventListener('click', homePage)
+//Iteration 0 Event Listeners
+randomPosterButton.addEventListener('click', homePage)
 window.addEventListener('load', homePage)
+
+//Iteration 1 Event Listeners
+showFormButton.addEventListener('click', openFormPage)
+takeMeBack.addEventListener('click', openMainPage)
+showMyPosterButton.addEventListener('click', displayMyPoster)
+formCreatePoster.addEventListener('load', openFormPage)
+backToMainButton.addEventListener('click', backToMainPage)
+showSavedPageButton.addEventListener('click', openSavedPosterPage)
 
 //button.addEventListener('load', homePage())
 // functions and event handlers go here 👇
@@ -158,8 +163,8 @@ formCreatePoster.classList.hidden("hidden")
 
 function displayMyPoster () {
 event.preventDefault()
-formCreatePoster.classList.add("hidden")
-hideMainPosterPage.classList.remove("hidden")
+formCreatePoster.classList.add('hidden')
+hideMainPosterPage.classList.remove('hidden')
 posterImage.src = imageUrlInput.value
 posterTitle.innerText = posterTitleInput.value 
 posterQuote.innerText = posterQuoteInput.value
@@ -167,14 +172,14 @@ posterQuote.innerText = posterQuoteInput.value
 }
 
 function openSavedPosterPage (){
-  hideMainPosterPage.classList.add("hidden")
-  showSavedPosters.classList.remove("hidden")
+  hideMainPosterPage.classList.add('hidden')
+  showSavedPosters.classList.remove('hidden')
 
 }
 
-backToMainPage (){
-  hideMainPosterPage.classList.remove("hidden")
-  showSavedPosters.classList.add("hidden")
+function backToMainPage (){
+  hideMainPosterPage.classList.remove('hidden')
+  showSavedPosters.classList.add('hidden')
 }
 
 
