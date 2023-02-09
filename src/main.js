@@ -1,3 +1,4 @@
+
 // .query selector variables go here 👇
 // var savePoster = document.querySelector(".save-poster");
 // var showSaved = document.querySelector(".show-saved");
@@ -112,6 +113,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+=======
 // savePoster.addEventListener("", "")
 // showSaved.addEventListener("", "")
 // showRandom.addEventListener("", "")
@@ -141,4 +143,4 @@ function generatePage() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+
