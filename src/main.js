@@ -113,7 +113,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-=======
+// =======
 // savePoster.addEventListener("", "")
 // showSaved.addEventListener("", "")
 // showRandom.addEventListener("", "")
@@ -143,4 +143,4 @@ function generatePage() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-
+}
