@@ -1,11 +1,12 @@
-// .query selector variables go here 👇 HEAD
-//iteration 0
+// .query selector variables go here 👇
+//.query selectors for iteration 0
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
-var randomPosterButton = document.querySelector(".show-random");
-//iteration 1 -
-var hideMainPosterPage = document.querySelector(".main-poster");
+var button = document.querySelector(".show-random");
+// .query selectors for iteration 1
+var hideMainPosterPage = document.querySelector(".main-poster")
+
 var formCreatePoster = document.querySelector(".poster-form");
 var showMyPosterButton = document.querySelector(".make-poster");
 var showFormButton = document.querySelector(".show-form");
@@ -13,11 +14,10 @@ var takeMeBack = document.querySelector(".show-main");
 var posterQuoteInput = document.querySelector("#poster-quote");
 var posterTitleInput = document.querySelector("#poster-title");
 var imageUrlInput = document.querySelector("#poster-image-url");
-var backToMainButton = document.querySelector(".back-to-main");
-var showSavedPageButton = document.querySelector('.show-saved');
-var showSavedPosters = document.querySelector('.saved-posters');
 
-//iteration 2
+var backToMainButton = document.querySelector(".back-to-main")
+var showSavedPageButton = document.querySelector('.show-saved')
+var showSavedPosters = document.querySelector('.saved-posters')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,23 +121,28 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-//Iteration 0
-window.addEventListener('load', homePage);
-randomPosterButton.addEventListener('click', homePage);
-//Iteration 1
-showFormButton.addEventListener('click', openFormPage);
-takeMeBack.addEventListener('click', openMainPage);
-showMyPosterButton.addEventListener('click', displayMyPoster);
-formCreatePoster.addEventListener('load', openFormPage);
-backToMainButton.addEventListener('click', backToMainPage);
-showSavedPageButton.addEventListener('click', openSavedPosterPage);
-//functions and event handlers go here 👇
+
+//Iteration 0 Event Listeners
+randomPosterButton.addEventListener('click', homePage)
+window.addEventListener('load', homePage)
+
+//Iteration 1 Event Listeners
+showFormButton.addEventListener('click', openFormPage)
+takeMeBack.addEventListener('click', openMainPage)
+showMyPosterButton.addEventListener('click', displayMyPoster)
+formCreatePoster.addEventListener('load', openFormPage)
+backToMainButton.addEventListener('click', backToMainPage)
+showSavedPageButton.addEventListener('click', openSavedPosterPage)
+
+//button.addEventListener('load', homePage())
+// functions and event handlers go here 👇
 
 var imgIndex = getRandomIndex(images);
 var quoteIndex = getRandomIndex(quotes);
 var titleIndex = getRandomIndex(titles);
 
-//iteratrion 0
+// functions from iteration 0
+
 function homePage() {
 
 posterImage.src = images[getRandomIndex(images)]
@@ -164,6 +169,39 @@ function openFormPage(){
   hideMainPosterPage.classList.remove('hidden')
   showSavedPosters.classList.add('hidden')
   }
+//functions from iteration 1 
+function openMainPage  () {
+hideMainPosterPage.classList.remove("hidden")
+formCreatePoster.classList.add("hidden")
+}
+
+function openFormPage (){
+hideMainPosterPage.classList.add("hidden")
+formCreatePoster.classList.hidden("hidden")
+
+}
+
+function displayMyPoster () {
+event.preventDefault()
+formCreatePoster.classList.add('hidden')
+hideMainPosterPage.classList.remove('hidden')
+posterImage.src = imageUrlInput.value
+posterTitle.innerText = posterTitleInput.value 
+posterQuote.innerText = posterQuoteInput.value
+
+}
+
+function openSavedPosterPage (){
+  hideMainPosterPage.classList.add('hidden')
+  showSavedPosters.classList.remove('hidden')
+
+}
+
+function backToMainPage (){
+  hideMainPosterPage.classList.remove('hidden')
+  showSavedPosters.classList.add('hidden')
+}
+
 
 //Iteration 2
 function displayMyPoster(){
@@ -185,3 +223,4 @@ function displayMyPoster(){
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
