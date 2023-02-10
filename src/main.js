@@ -17,6 +17,7 @@ var backToMainButton = document.querySelector(".back-to-main");
 var showSavedPageButton = document.querySelector('.show-saved');
 var showSavedPosters = document.querySelector('.saved-posters');
 
+//iteration 2
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -149,20 +150,12 @@ function openFormPage(){
   hideMainPosterPage.classList.add('hidden')
   formCreatePoster.classList.remove('hidden')
 }
-//Iteration 1
+
   function openMainPage(){
     hideMainPosterPage.classList.remove('hidden')
     formCreatePoster.classList.add('hidden')
   }
 
-  function displayMyPoster(){
-    event.preventDefault();
-    formCreatePoster.classList.add('hidden')
-    hideMainPosterPage.classList.remove('hidden')
-    posterImage.src = imageUrlInput.value 
-    posterTitle.innerText = posterTitleInput.value 
-    posterQuote.innerText = posterQuoteInput.value 
-  }
   function openSavedPosterPage() {
   hideMainPosterPage.classList.add('hidden')
   showSavedPosters.classList.remove('hidden')
@@ -172,7 +165,18 @@ function openFormPage(){
   showSavedPosters.classList.add('hidden')
   }
 
-//
+//Iteration 2
+function displayMyPoster(){
+  event.preventDefault();
+  formCreatePoster.classList.add('hidden')
+  hideMainPosterPage.classList.remove('hidden')
+  posterImage.src = imageUrlInput.value 
+  posterTitle.innerText = posterTitleInput.value 
+  posterQuote.innerText = posterQuoteInput.value 
+  images.push(imageUrlInput.value)
+  titles.push(posterTitleInput.value)
+  quotes.push(posterQuoteInput.value)
+}
 // (we've provided one for you to get you started)!
 //function newRandomPoster() {
 
