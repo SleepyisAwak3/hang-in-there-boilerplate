@@ -1,12 +1,8 @@
-// .query selector variables go here 👇
-//.query selectors for iteration 0
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
-var button = document.querySelector(".show-random");
-// .query selectors for iteration 1
-var hideMainPosterPage = document.querySelector(".main-poster")
-
+var randomPosterButton = document.querySelector(".show-random");
+var hideMainPosterPage = document.querySelector(".main-poster");
 var formCreatePoster = document.querySelector(".poster-form");
 var showMyPosterButton = document.querySelector(".make-poster");
 var showFormButton = document.querySelector(".show-form");
@@ -14,12 +10,12 @@ var takeMeBack = document.querySelector(".show-main");
 var posterQuoteInput = document.querySelector("#poster-quote");
 var posterTitleInput = document.querySelector("#poster-title");
 var imageUrlInput = document.querySelector("#poster-image-url");
-
 var backToMainButton = document.querySelector(".back-to-main")
 var showSavedPageButton = document.querySelector('.show-saved')
 var showSavedPosters = document.querySelector('.saved-posters')
+var saveThisPosterGrid = document.querySelector('.saved-posters-grid')
+var saveThisPosterButton = document.querySelector('.save-poster')
 
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -78,7 +74,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -105,7 +101,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -119,108 +115,100 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var imgIndex = getRandomIndex(images);
+var quoteIndex = getRandomIndex(quotes);
+var titleIndex = getRandomIndex(titles);
 
-// event listeners go here 👇
-
-//Iteration 0 Event Listeners
-randomPosterButton.addEventListener('click', homePage)
-window.addEventListener('load', homePage)
-
-//Iteration 1 Event Listeners
+window.addEventListener('load', showRandomPoster)
+randomPosterButton.addEventListener('click', showRandomPoster)
 showFormButton.addEventListener('click', openFormPage)
 takeMeBack.addEventListener('click', openMainPage)
 showMyPosterButton.addEventListener('click', displayMyPoster)
 formCreatePoster.addEventListener('load', openFormPage)
 backToMainButton.addEventListener('click', backToMainPage)
-showSavedPageButton.addEventListener('click', openSavedPosterPage)
+showSavedPageButton.addEventListener('click', changeGrid)
+saveThisPosterGrid.addEventListener('dblclick', deleteSavedPoster)
+saveThisPosterButton.addEventListener('click', saveMyPoster)
 
-//button.addEventListener('load', homePage())
-// functions and event handlers go here 👇
-
-var imgIndex = getRandomIndex(images);
-var quoteIndex = getRandomIndex(quotes);
-var titleIndex = getRandomIndex(titles);
-
-// functions from iteration 0
-
-function homePage() {
-
-posterImage.src = images[getRandomIndex(images)]
-posterTitle.innerText = titles[getRandomIndex(titles)]
-posterQuote.innerText = quotes[getRandomIndex(quotes)]
+function showRandomPoster() {
+  var imgIndex = getRandomIndex(images);
+  var quoteIndex = getRandomIndex(quotes);
+  var titleIndex = getRandomIndex(titles);
+  var newPoster = {
+    image: images[imgIndex],
+    title: titles[titleIndex],
+    quote: quotes[quoteIndex],
+  }
+currentPoster = new Poster(newPoster.image, newPoster.title, newPoster.quote)
+posterImage.src = currentPoster.imageURL
+posterTitle.innerText = currentPoster.title
+posterQuote.innerText = currentPoster.quote
 }
 
-//Iteration 1
 function openFormPage(){
   hideMainPosterPage.classList.add('hidden')
   formCreatePoster.classList.remove('hidden')
 }
-
+//Iteration 1
   function openMainPage(){
     hideMainPosterPage.classList.remove('hidden')
     formCreatePoster.classList.add('hidden')
   }
 
-  function openSavedPosterPage() {
+  function displayMyPoster(event){
+    event.preventDefault()
+    formCreatePoster.classList.add('hidden')
+    hideMainPosterPage.classList.remove('hidden')
+    currentPoster = new Poster(imageUrlInput.value, posterTitleInput.value, posterQuoteInput.value)
+    posterImage.src = currentPoster.imageURL
+    posterTitle.innerText = currentPoster.title
+    posterQuote.innerText = currentPoster.quote
+    images.push(imageUrlInput)
+    titles.push(posterTitleInput)
+    quotes.push(posterQuoteInput)
+  }
+  function saveMyPoster() {
+    if (!savedPosters.includes(currentPoster)) {
+      savedPosters.push(currentPoster)
+    }
+  }
+
+function changeGrid() {
+    var displaySavedPosters = [];
+      for (var i = 0; i < savedPosters.length; i++) {
+        displaySavedPosters += `<article class="mini-poster" id="${savedPosters[i].id}">
+        <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+        <h2 class="poster-title">${savedPosters[i].title}</h2>
+        <h4 class="poster-quote">${savedPosters[i].quote}</h4></article>`
+        saveThisPosterGrid.innerHTML = displaySavedPosters
+    }
+    saveThisPosterPage()
+  }
+
+function openSavedPosterPage() {
   hideMainPosterPage.classList.add('hidden')
   showSavedPosters.classList.remove('hidden')
   }
-  function backToMainPage() {
+function backToMainPage() {
   hideMainPosterPage.classList.remove('hidden')
   showSavedPosters.classList.add('hidden')
   }
-//functions from iteration 1 
-function openMainPage  () {
-hideMainPosterPage.classList.remove("hidden")
-formCreatePoster.classList.add("hidden")
-}
-
-function openFormPage (){
-hideMainPosterPage.classList.add("hidden")
-formCreatePoster.classList.hidden("hidden")
-
-}
-
-function displayMyPoster () {
-event.preventDefault()
-formCreatePoster.classList.add('hidden')
-hideMainPosterPage.classList.remove('hidden')
-posterImage.src = imageUrlInput.value
-posterTitle.innerText = posterTitleInput.value 
-posterQuote.innerText = posterQuoteInput.value
-
-}
-
-function openSavedPosterPage (){
+function saveThisPosterPage() {
   hideMainPosterPage.classList.add('hidden')
   showSavedPosters.classList.remove('hidden')
+  //savedPosters.push(saveThisPosterButton)
+  }
 
-}
-
-function backToMainPage (){
-  hideMainPosterPage.classList.remove('hidden')
-  showSavedPosters.classList.add('hidden')
-}
-
-
-//Iteration 2
-function displayMyPoster(){
-  event.preventDefault();
-  formCreatePoster.classList.add('hidden')
-  hideMainPosterPage.classList.remove('hidden')
-  posterImage.src = imageUrlInput.value 
-  posterTitle.innerText = posterTitleInput.value 
-  posterQuote.innerText = posterQuoteInput.value 
-  images.push(imageUrlInput.value)
-  titles.push(posterTitleInput.value)
-  quotes.push(posterQuoteInput.value)
-}
+function deleteSavedPoster(event){
+    for (var i = 0; i < savedPosters.length; i++) {
+    if(savedPosters[i].id == event.target.parentNode.id)
+      savedPosters.splice(i, 1)
+      event.target.parentNode.remove(event.target)
+      }
+    changeGrid()
+  }
 // (we've provided one for you to get you started)!
-//function newRandomPoster() {
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
