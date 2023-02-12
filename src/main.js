@@ -1,3 +1,5 @@
+// Query Selectors:
+
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
@@ -10,11 +12,13 @@ var takeMeBack = document.querySelector(".show-main");
 var posterQuoteInput = document.querySelector("#poster-quote");
 var posterTitleInput = document.querySelector("#poster-title");
 var imageUrlInput = document.querySelector("#poster-image-url");
-var backToMainButton = document.querySelector(".back-to-main")
-var showSavedPageButton = document.querySelector('.show-saved')
-var showSavedPosters = document.querySelector('.saved-posters')
-var saveThisPosterGrid = document.querySelector('.saved-posters-grid')
-var saveThisPosterButton = document.querySelector('.save-poster')
+var backToMainButton = document.querySelector(".back-to-main");
+var showSavedPageButton = document.querySelector('.show-saved');
+var showSavedPosters = document.querySelector('.saved-posters');
+var saveThisPosterGrid = document.querySelector('.saved-posters-grid');
+var saveThisPosterButton = document.querySelector('.save-poster');
+
+// Source Arrays:
 
 var images = [
   "./assets/bees.jpg",
@@ -36,6 +40,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -73,6 +78,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+
 var quotes = [
   "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -113,11 +119,16 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// Variables:
+
 var savedPosters = [];
 var currentPoster;
 var imgIndex = getRandomIndex(images);
 var quoteIndex = getRandomIndex(quotes);
 var titleIndex = getRandomIndex(titles);
+
+// Event Listeners:
 
 window.addEventListener('load', showRandomPoster)
 randomPosterButton.addEventListener('click', showRandomPoster)
@@ -129,6 +140,8 @@ backToMainButton.addEventListener('click', backToMainPage)
 showSavedPageButton.addEventListener('click', changeGrid)
 saveThisPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 saveThisPosterButton.addEventListener('click', saveMyPoster)
+
+// Functions:
 
 function showRandomPoster() {
   var imgIndex = getRandomIndex(images);
@@ -149,7 +162,7 @@ function openFormPage(){
   hideMainPosterPage.classList.add('hidden')
   formCreatePoster.classList.remove('hidden')
 }
-//Iteration 1
+
   function openMainPage(){
     hideMainPosterPage.classList.remove('hidden')
     formCreatePoster.classList.add('hidden')
@@ -196,7 +209,6 @@ function backToMainPage() {
 function saveThisPosterPage() {
   hideMainPosterPage.classList.add('hidden')
   showSavedPosters.classList.remove('hidden')
-  //savedPosters.push(saveThisPosterButton)
   }
 
 function deleteSavedPoster(event){
@@ -207,7 +219,6 @@ function deleteSavedPoster(event){
       }
     changeGrid()
   }
-// (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
