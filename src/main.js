@@ -10,11 +10,11 @@ var takeMeBack = document.querySelector(".show-main");
 var posterQuoteInput = document.querySelector("#poster-quote");
 var posterTitleInput = document.querySelector("#poster-title");
 var imageUrlInput = document.querySelector("#poster-image-url");
-var backToMainButton = document.querySelector(".back-to-main");
-var showSavedPageButton = document.querySelector('.show-saved');
-var showSavedPosters = document.querySelector('.saved-posters');
-var saveThisPosterGrid = document.querySelector('.saved-posters-grid');
-var saveThisPosterButton = document.querySelector('.save-poster');
+var backToMainButton = document.querySelector(".back-to-main")
+var showSavedPageButton = document.querySelector('.show-saved')
+var showSavedPosters = document.querySelector('.saved-posters')
+var saveThisPosterGrid = document.querySelector('.saved-posters-grid')
+var saveThisPosterButton = document.querySelector('.save-poster')
 
 var images = [
   "./assets/bees.jpg",
@@ -74,7 +74,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -101,7 +101,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
